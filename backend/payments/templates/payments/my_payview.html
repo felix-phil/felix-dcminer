@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay</title>
+    <script src="{% static 'djangoflutterwave/js/payment.js' %}">
+        // const paymentParams = {
+        //     email: 'www.felix4real98@gmail.com',
+        //     phonenumber: '08171551089',
+        //     firstname: 'Felix',
+        //     lastname: 'Philips'
+        // }
+    </script>
+</head>
+<body>
+    {% include 'djangoflutterwave/pay_button.html' with plan=upkeep %}
+    {% include 'djangoflutterwave/pay_button.html' with plan=mediumbusiness %}
+    {% include 'djangoflutterwave/pay_button.html' with plan=largebusiness %}
+
+
+    
+    <script type="text/javascript"  src="https://checkout.flutterwave.com/v3.js">
+    </script>
+    
+</body>
+</html>

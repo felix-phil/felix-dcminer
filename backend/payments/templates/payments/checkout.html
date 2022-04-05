@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mr-auto ml-auto align-content-center offset-md-2">
+                <div class="mt-5 pt-4">
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+
+                <form method="POST" action="{% url 'initializePayment'  %}">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="form-group col-lg-12">
+                            <label for="lastname">Email</label>
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="example@domain.com" name="email"
+                                    id="email" />
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label for="firstname" class="form-control-label">Firstname</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Felix" name="firstname"
+                                    id="firstname" />
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label for="lastname">Lastname</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Philips" name="lastname"
+                                    id="lastname" />
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-5">
+                            <label for="cardno">Card Number</label>
+                            <div class="input-group">
+                                <input type="text" placeholder="5531 8866 5214 2950" class="form-control" name="cardno"
+                                    id="cardno" />
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label for="cvv">CVV</label>
+                            <div class="input-group">
+                                <input type="text" placeholder="564" class="form-control" name="cvv" id="cvv" />
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-2">
+                            <label for="firstname">Expiry Month</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="MM" name="expirymonth"
+                                    id="expirymonth" />
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-2">
+                            <label for="firstname">Expiry Year</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="YY" name="expiryyear"
+                                    id="expiryyear" />
+                            </div>
+                        </div>
+                        <!-- <button type="button" onClick="payWithRave()">Pay Now</button> -->
+                        <div class="form-group mt-5">
+                            <button type="submit" class="btn btn-primary form-control">Pay Now</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+        integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
+        crossorigin="anonymous"></script>
+    <!-- <script>
+        const API_publicKey = "FLWPUBK_TEST-552419dd913e933d0658081154bbdd24-X";
+
+        function payWithRave() {
+            var x = getpaidSetup({
+                PBFPubKey: API_publicKey,
+                customer_email: "user@example.com",
+                amount: 1000,
+                customer_phone: "234099940409",
+                currency: "NGN",
+                txref: "rave-123456",
+                meta: [{
+                    metaname: "flightID",
+                    metavalue: "AP1234"
+                }],
+                onclose: function () { },
+                callback: function (response) {
+                    var txref = response.data.txRef; // collect txRef returned and pass to a                    server page to complete status check.
+                    console.log("This is the response returned after a charge", response);
+                    if (
+                        response.data.chargeResponseCode == "00" ||
+                        response.data.chargeResponseCode == "0"
+                    ) {
+                        // redirect to a success page
+                    } else {
+                        // redirect to a failure page.
+                    }
+
+                    x.close(); // use this to close the modal immediately after payment.
+                }
+            });
+        }
+    </script> -->
+
+</body>
+
+</html>

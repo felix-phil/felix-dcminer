@@ -1,0 +1,57 @@
+.mybtn:focus {
+  outline: none;
+}
+::-webkit-scrollbar {
+  width: 0.7rem;
+}
+::-webkit-scrollbar-track {
+  background: #ccc;
+}
+::-webkit-scrollbar-thumb {
+  background: #2e3b5c;
+  border-radius: 0.5rem;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2e3b55;
+}
+:::-webkit-progress-bar {
+  width: 5px;
+}
+.typing {
+  width: 0ch;
+  color: white;
+  float: left;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 60px;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 5s steps(30) 1s infinite alternate;
+}
+.typing span{
+  color: #0099ff;
+}
+.crow{
+  float: left;
+  color: white;
+  font-family: consolas;
+  font-weight: bold;
+  font-size: 60px;
+  animation: crow 0.5s linear 0s infinite;
+}
+@keyframes typing {
+  from {
+    width: 0ch;
+  }
+  to{
+    width: 10ch;
+  } 
+}
+@keyframes crow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
